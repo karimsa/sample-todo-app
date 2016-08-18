@@ -82,7 +82,7 @@ body {
  * elements. They have a hideous border, background, outline, font, font-size, padding,
  * and really every other property.
  */
-.inTodo {
+#inTodo {
     padding: 5px 10px;
     width: 50%;
     font-size: 1em;
@@ -95,8 +95,8 @@ body {
  * The outline of input elements is a sticky mess. We can use a similar
  * look using a 'box-shadow' that works better.
  */
-.inTodo:hover,
-.inTodo:focus {
+#inTodo:hover,
+#inTodo:focus {
     outline: none;
 }
 
@@ -104,7 +104,7 @@ body {
  * On hover, changing up the state to a more bold style will draw more focus
  * to what the user wishes to draw focus to.
  */
-.inTodo:hover {
+#inTodo:hover {
     box-shadow: 0 0 5px #3F51B5;
 }
 
@@ -112,7 +112,7 @@ body {
  * On focus, we want to draw utmost focus to the active element. Doubling the
  * 'box-shadow' value will result in a darker box-shadow.
  */
-.inTodo:focus {
+#inTodo:focus {
     box-shadow: 0 0 5px #3F51B5, 0 0 5px #3F51B5;
 }
 
