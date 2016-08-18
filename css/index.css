@@ -1,0 +1,130 @@
+/**
+ * css/index.css - sample-todo-app
+ */
+
+/**
+ * The selector '*' matches ALL elements.
+ * It is generally a bad idea to use this because it slows down your web app,
+ * but for the purposes of a simple application, I think it's okay. I am using it
+ * To remove all margins and padding from elements because the browser puts in padding
+ * and margins by default.
+ */
+* {
+    margin: 0;
+    padding: 0;
+
+    /**
+     * The 'transition' property forces the browser to animate
+     * changes in property values. For instance, if an element has a width of 100px
+     * and on hover, we set the width to 150px, then the browser will animate the transition
+     * of increasing width by 50px. 
+     */
+    -webkit-transition: .3s all ease;
+    transition: .3s all ease;
+}
+
+/**
+ * Another important reset is to set the html and body tags to width and height of 100%.
+ * This will force them to occupy the entire space on the page instead of their default
+ * "increase size as you go" philosophy. This will also allow you to create elements that
+ * occupy the entire page (for instance, here I am sizing the '.full' element to the entire
+ * page as well).
+ */
+html,
+body,
+.full {
+    height: 100%;
+    width: 100%;
+
+    /**
+     * Setting the font-family property at the body level will cause all elements created
+     * to inherit the font-family of the body (unless explicitally set).
+     */
+    font-family: 'Helvetica', sans-serif;
+}
+
+/**
+ * If an element has display type 'table' AND it's child has display type 'table-cell',
+ * then the child can be vertically aligned to the middle of the parent by setting the
+ * 'vertical-align' property to 'middle'.
+ */
+.full {
+    display: table;
+}
+
+/**
+ * To horizontally center elements within an element, we can set 'text-align: center;' on
+ * the parent.
+ */
+.full > .wrapper {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/**
+ * These properties set a more attractive look than the default look of input
+ * elements. They have a hideous border, background, outline, font, font-size, padding,
+ * and really every other property.
+ */
+input[type="text"] {
+    padding: 5px 10px;
+    width: 50%;
+    font-size: 1em;
+
+    border-radius: 5px;
+    border: solid 1px rgba(0,0,0,.2);
+}
+
+/**
+ * The outline of input elements is a sticky mess. We can use a similar
+ * look using a 'box-shadow' that works better.
+ */
+input[type="text"]:hover,
+input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px blue;
+}
+
+/**
+ * This is a list of resets for the 'button' element.
+ */
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    font-size: 1em;
+}
+
+button:hover {
+    background: rgba(0,0,0,.1);
+    cursor: pointer;
+}
+
+button:active,
+button:focus {
+    outline: none;
+}
+
+.delete {
+    font-size: .9em;
+    opacity: .4;
+}
+
+.delete:hover {
+    opacity: 1;
+}
+
+.list {
+    padding-top: 10px;
+}
+
+.list > .item {
+    font-size: .9em;
+    padding: 10px;
+}
+
+.list > .item input[type="checkbox"] {
+    margin-right: 10px;
+}
