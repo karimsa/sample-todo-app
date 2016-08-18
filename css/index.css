@@ -82,7 +82,7 @@ body {
  * elements. They have a hideous border, background, outline, font, font-size, padding,
  * and really every other property.
  */
-input[type="text"] {
+.inTodo {
     padding: 5px 10px;
     width: 50%;
     font-size: 1em;
@@ -95,8 +95,8 @@ input[type="text"] {
  * The outline of input elements is a sticky mess. We can use a similar
  * look using a 'box-shadow' that works better.
  */
-input[type="text"]:hover,
-input[type="text"]:focus {
+.inTodo:hover,
+.inTodo:focus {
     outline: none;
 }
 
@@ -104,7 +104,7 @@ input[type="text"]:focus {
  * On hover, changing up the state to a more bold style will draw more focus
  * to what the user wishes to draw focus to.
  */
-input[type="text"]:hover {
+.inTodo:hover {
     box-shadow: 0 0 5px #3F51B5;
 }
 
@@ -112,7 +112,7 @@ input[type="text"]:hover {
  * On focus, we want to draw utmost focus to the active element. Doubling the
  * 'box-shadow' value will result in a darker box-shadow.
  */
-input[type="text"]:focus {
+.inTodo:focus {
     box-shadow: 0 0 5px #3F51B5, 0 0 5px #3F51B5;
 }
 
@@ -183,14 +183,14 @@ button:focus {
  * This style is awfully specific so we can add some space between the todo list
  * and the controls.
  */
-.list {
+#list {
     padding-top: 10px;
 }
 
 /**
  * Some styles to make each todo item look nice and stand out a bit.
  */
-.list > .item {
+#list > .item {
     font-size: .9em;
     padding: 10px;
     color: #fff;
@@ -200,13 +200,13 @@ button:focus {
 /**
  * Once again, we darken the background a bit on hover to draw focus.
  */
-.list > .item:hover {
+#list > .item:hover {
     background: rgba(0,0,0,.3);
 }
 
 /**
  * This is just to add some space between the todo text and the checkbox.
  */
-.list > .item input[type="checkbox"] {
+#list > .item .checkbox {
     margin-right: 10px;
 }
