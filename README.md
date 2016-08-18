@@ -7,7 +7,7 @@ A sample web application to showcase the basic functionality of a todo app.
 
 ## Author
 
-Written by [Karim Alibhai](https://github.com/karimsa] for the [Introduction to Web Application Development](https://github.com/iwad) course.
+Written by [Karim Alibhai](https://github.com/karimsa) for the [Introduction to Web Application Development](https://github.com/iwad) course.
 
 ## License
 
