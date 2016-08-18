@@ -44,6 +44,21 @@ body,
 }
 
 /**
+ * This is my favourite combination of properties for background images that are implemented
+ * in pure CSS. The 'background-image' property is used to apply an image onto the background.
+ * However, this is not nearly enough. The image will be too small for some screens and too big
+ * for others. To get over this, we use 'background-size: cover;' and the browser will handle the
+ * image resizing for us. Finally, based on our image and the parts of the image we wish to draw focus
+ * to, we use 'background-position' with a generic position keyword (center, top, bottom, left, right)
+ * to create auto-positioning of our image.
+ */
+body {
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+/**
  * If an element has display type 'table' AND it's child has display type 'table-cell',
  * then the child can be vertically aligned to the middle of the parent by setting the
  * 'vertical-align' property to 'middle'.
