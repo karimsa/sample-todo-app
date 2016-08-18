@@ -3,7 +3,7 @@
 A sample web application to showcase the basic functionality of a todo app.
 
  - **Demo: [todo.alibhai.co](http://todo.alibhai.co/)**
- - **Demo of extra features: [todo.alibhai.co/extra)(http://todo.alibhai.co/extra.html)**
+ - **Demo of extra features: [todo.alibhai.co/extra](http://todo.alibhai.co/extra.html)**
 
 ## Author
 
