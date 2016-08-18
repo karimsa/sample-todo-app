@@ -92,6 +92,18 @@ body {
 }
 
 /**
+ * '@media' queries are used to write responsive CSS. These queries allow the programmer to
+ * create a block of CSS that will only be applied by the browser if the screen is a particular
+ * size. In the following code, we are changing the width of the input element to 70% as opposed
+ * to 50% on screens with a width smaller than 768px.
+ */
+@media (max-width: 768px) {
+    #inTodo {
+        width: 70%;
+    }
+}
+
+/**
  * The outline of input elements is a sticky mess. We can use a similar
  * look using a 'box-shadow' that works better.
  */
