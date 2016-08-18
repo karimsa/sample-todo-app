@@ -18,7 +18,11 @@
      */
     var inTodo = document.getElementById('inTodo'),
         btnAdd = document.getElementById('add'),
-        elmList = document.getElementById('list');
+        btnSortUp = document.getElementById('sortUp'),
+        btnSortDown = document.getElementById('sortDown'),
+        btnDeleteAll = document.getElementById('deleteAll'),
+        elmList = document.getElementById('list'),
+        imgCode = document.getElementById('code');
     
     /**
      * This array will store all the todo items for us.
@@ -31,6 +35,35 @@
      * }
      */
     var list = [];
+
+    /**
+     * This function grabs the JSON object from the URL, converts it into object form,
+     * and then pops it into the list variable.
+     */
+    var getJSON = function () {
+        // The 'location.hash' variable is a global variable that stores the
+        // string in the URL after the '#' (hash).
+        // We must offset this string by 1 character because the first character
+        // of the hash is always '#'
+        var listString = location.hash.substr(1);
+
+        // We just need to make sure that the string is not empty.
+        // If it is, we can't do much more. So we quit.
+        if ( !listString ) {
+            return;
+        }
+
+        // We should push the string through decodeURIComponent to convert
+        // all the special characters back
+        listString = decodeURIComponent(listString);
+
+        // Finally, we transform the string into an object using the browser's native
+        // API
+        list = JSON.parse(listString);
+
+        // Now we update the view because we have changed the list variable.
+        updateView();
+    };
 
     /**
      * This function transforms a todo JSON object into the
@@ -162,6 +195,73 @@
     };
 
     /**
+     * This function sorts the list by the text property in
+     * alphabetical order.
+     */
+    var sortDown = function ( event ) {
+        // Same use as above.
+        event.preventDefault();
+
+        // This will sort the list alphabetically automatically.
+        list.sort(function (a, b) {
+            return a.text > b.text;
+        });
+
+        // This is not necessary but adds to the user's experience.
+        // We will blur the button that was clicked to break it's focus.
+        event.target.blur();
+
+        // We now update the view since the list has been changed.
+        updateView();
+    };
+
+    /**
+     * This function sorts the list by the text property in reverse
+     * alphabetical order.
+     */
+    var sortUp = function ( event ) {
+        // Same use as above.
+        event.preventDefault();
+
+        // This will sort the list alphabetically automatically.
+        list.sort(function (a, b) {
+            return a.text < b.text;
+        });
+
+        // This is not necessary but adds to the user's experience.
+        // We will blur the button that was clicked to break it's focus.
+        event.target.blur();
+
+        // We now update the view since the list has been changed.
+        updateView();
+    };
+
+    /**
+     * This function filters out all todo items that have been
+     * marked 'done'.
+     */
+    var deleteAll = function ( event ) {
+        // Same use as above.
+        event.preventDefault();
+
+        // This is a simple use of the Array.prototype.filter
+        // method. We need to return a boolean stating whether or
+        // not we wish to keep a particular item. We will simply return
+        // the inverse of the 'done' property so that the only elements
+        // kept are the ones with the 'done' property set to false.
+        list = list.filter(function ( elm ) {
+            return !elm.done;
+        });
+
+        // This is not necessary but adds to the user's experience.
+        // We will blur the button that was clicked to break it's focus.
+        event.target.blur();
+
+        // We need to update the view since we have modified the list.
+        updateView();
+    };
+
+    /**
      * This function transforms the entire todo list array into
      * HTML and injects it into the list element. This will take
      * the *model* that the code is manipulating and transform it
@@ -213,12 +313,29 @@
                 deleteBtns[i].setAttribute('data-has-events', 'true');
             }
         }
+
+        // to create the QR code, we first transform our object into a string.
+        var listString = JSON.stringify(list);
+
+        // we now need to make this string appropriate for URLs by giving it
+        // over to encodeURIComponent
+        listString = encodeURIComponent(listString);
+
+        // Now that we have the actual string that we have to stick into the
+        // GET variable, we can simply set the hash of the page to this string
+        location.hash = listString;
+
+        // we can now reset the image to the new QR code
+        imgCode.src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(location.href);
     };
 
     /**
-     * Attach the addTodo function to the click event of the add button.
+     * Attach the appropriate event listeners.
      */
     btnAdd.addEventListener('click', addTodo);
+    btnSortUp.addEventListener('click', sortUp);
+    btnSortDown.addEventListener('click', sortDown);
+    btnDeleteAll.addEventListener('click', deleteAll);
 
     /**
      * We create an event that waits for keyboard keys to be pressed.
@@ -231,4 +348,10 @@
             addTodo(event);
         }
     });
+
+    /**
+     * Start off the application by trying to grab the saved JSON
+     * from the URL.
+     */
+    getJSON();
 }());

@@ -15,11 +15,20 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+    <div class="qr-wrapper">
+        <div class="qr-inner">
+            <img id="code" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Error" alt="">
+        </div>
+    </div>
+
     <div class="full">
         <div class="wrapper">
             <div class="controls">
                 <input id="inTodo" type="text" placeholder="Enter a task ...">
                 <button id="add">+</button>
+                <button id="deleteAll">x</button>
+                <button id="sortDown">&blacktriangledown;</button>
+                <button id="sortUp">&blacktriangle;</button>
             </div>
             <ul id="list"></ul>
         </div>
