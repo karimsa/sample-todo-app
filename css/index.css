@@ -141,14 +141,22 @@ button:hover {
 }
 
 /**
- * Another reset.
  * The darker background in an active/focus state will deepen the background
  * as the user moves from a hover state to a click.
  */
 button:active,
 button:focus {
-    outline: none;
     background: rgba(0,0,0,.2);
+}
+
+/**
+ * Another important reset. To avoid the sticky outline.
+ */
+button:active,
+button:focus,
+input:active,
+input:focus {
+    outline: none;
 }
 
 /**
@@ -205,8 +213,17 @@ button:focus {
 }
 
 /**
- * This is just to add some space between the todo text and the checkbox.
+ * This is just to add some space between the todo text and the checkbox,
+ * as well as between the todo text and the delete button.
  */
-#list > .item .checkbox {
-    margin-right: 10px;
+#list > .item span {
+    margin: 0 10px;
+}
+
+/**
+ * This creates a line through the text when the 'done' class is applied
+ * to the list item.
+ */
+#list > .item.done span {
+    text-decoration: line-through;
 }
