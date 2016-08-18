@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Recall: These two tags are the basic tags that should be at -->
+    <!-- the top of your <head> -->
+    <meta charset="UTF-8">
+    <title>My Todo List</title>
+
+    <!-- The viewport meta tag forces the browser to scale the web page -->
+    <!-- to fit the device's screen. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- This is a simple CSS import that loads the styles we've written -->
+    <!-- into the page. -->
+    <link rel="stylesheet" href="css/index.css">
+
+    <!-- This imports the CSS file that has all of our QR code styling -->
+    <link rel="stylesheet" href="css/extra.css">
+</head>
+<body>
+    <div class="qr-wrapper">
+        <div class="qr-inner">
+            <img id="code" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Error" alt="">
+        </div>
+    </div>
+
+    <div class="full">
+        <div class="wrapper">
+            <div class="controls">
+                <input id="inTodo" type="text" placeholder="Enter a task ...">
+                <button id="add">+</button>
+                <button id="deleteAll">x</button>
+                <button id="sortDown">&blacktriangledown;</button>
+                <button id="sortUp">&blacktriangle;</button>
+            </div>
+            <ul id="list"></ul>
+        </div>
+    </div>
+
+    <!-- We import the javascript controller at the end so that the content has loaded -->
+    <!-- at this point and the javascript loading will not hold up the web page. -->
+    <script src="js/extra.js"></script>
+</body>
+</html>
