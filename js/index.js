@@ -32,19 +32,8 @@
      * This function should be called when the user has written
      * some text inside the input and wants this input to be transformed
      * into a todo item.
-     * 
-     * This function should be added as an event listener. Event listeners for
-     * all events receive a single argument: an event object describing what
-     * has happened.
      */
-    var addTodo = function ( event ) {
-        // The 'preventDefault()' function of an event object tells the
-        // browser NOT to do whatever it was planning on doing when the user
-        // triggers that event. For instance, calling 'event.preventDefault()'
-        // on the event object of a click listener on an anchor element will
-        // tell the browser NOT to redirect the page.
-        event.preventDefault();
-
+    var addTodo = function () {
         // The first thing to do is to grab what the user has entered into a
         // variable so we can use it.
         var text = inTodo.value;
@@ -68,10 +57,7 @@
     /**
      * This function removes a particular todo item from the list.
      */
-    var rmTodo = function ( event ) {
-        // Same use as above.
-        event.preventDefault();
-
+    var rmTodo = function () {
         // The 'target' propery of the event object points towards
         // the HTMLElement that was clicked. We need to grab the
         // 'id' property of this element because that is
@@ -140,7 +126,10 @@
     btnAdd.addEventListener('click', addTodo);
 
     /**
-     * We create an event that waits for keyboard keys to be pressed.
+     * We create an event listener that waits for keyboard keys to be pressed.
+     * 
+     * Recall: all event handlers receive a single argument, an event object
+     * that describes the event.
      */
     inTodo.addEventListener('keypress', function ( event ) {
         // If the key that was pressed has keyCode 13, which is
